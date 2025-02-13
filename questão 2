@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+//Escreva um programa em C que utilize uma Estrutura estoque que cont ́em uma string com o
+//nome Peca, um n ́umero inteiro para identificar o n ́umero da pe ̧ca, o pre ̧co em ponto flutuante e um
+//elemento inteiro para identificar o n ́umero do pedido.
+
+struct estoque{ //criando a estrutura global para que seja possível usar em todas as funcoes do codigo
+char peca[20];
+int numerodapeca;
+float precodapeca;
+int numerodopedido;
+};
+
+
+int main(){
+
+  struct estoque item; //criando a variavel local para que seja possível usar em todas as funcoes do codigo
+
+  printf("Digite o nome da peça:\n");
+  fgets(item.peca,20,stdin);
+  printf("Digite o numero da peça:\n");
+  scanf("%d",&item.numerodapeca);
+  printf("Digite o preço da peça:\n");
+  scanf("%f",&item.precodapeca);
+  printf("Digite o numero do pedido:\n");
+  scanf("%d",&item.numerodopedido);
+
+  //imprimindo os dados conseguidos: 
+  
+  printf("Nome da peça: %s\n",item.peca);
+  printf("Numero da peça: %d\n",item.numerodapeca);
+  printf("Preço da peça: %f\n",item.precodapeca);
+  printf("Numero do pedido: %d\n",item.numerodopedido);
+  
+  return 0;
+}
