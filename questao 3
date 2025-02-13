@@ -1,0 +1,56 @@
+//Escreva um programa em C que gere um vetor com n ́umeros aleat ́orios e calcule sua m ́edia. Orga-
+//nize uma Estrutura com as seguintes informa ̧c ̃oes: ponteiro para a matriz, quantidade de elementos e a m ́edia.
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+struct vetor{   //estrutura golbal para todo o código
+    int *vetor;       // Ponteiro para o vetor
+    int quantidade;   // Quantidade de elementos no vetor
+    float media;      // Média dos números
+};
+
+float media(int *vetor, int quantidade){
+  int soma = 0;
+      for (int i = 0; i < quantidade; i++) {
+          soma += vetor[i];
+      }
+      return (float)soma / quantidade;
+  }
+
+int main(){
+  struct vetor vetor; // Instância da estrutura
+    int n;
+
+  srand(time(NULL));
+
+  printf("Digite o número de elementos do vetor:\n");
+  scanf("%d", &n);
+
+  vetor.vetor = (int *) malloc(n * sizeof(int));
+
+  if (vetor.vetor == NULL){
+    printf("Erro ao alocar memória para o vetor.\n");
+    return 1;
+  }
+  vetor.quantidade = n;
+
+  printf("Números gerados: ");
+  for (int i = 0; i < n; i++) {
+      vetor.vetor[i] = rand() % 100; // Gera números aleatórios entre 0 e 99
+      printf("%d ", vetor.vetor[i]);
+  }
+  printf("\n");
+
+  vetor.media = media(vetor.vetor, vetor.quantidade);
+
+  // Exibe as informações
+  printf("Quantidade de elementos: %d\n", vetor.quantidade);
+  printf("Média dos números: %.2f\n", vetor.media);
+
+  // Libera a memória alocada para o vetor
+  free(vetor.vetor);
+  
+  return 0;
+}
