@@ -1,0 +1,21 @@
+#include <stdio.h>
+
+//Escreva um programa em C que utilize uma Estrutura aluno para conter duas notas, lidas do usu ́ario, e sua m ́edia.
+
+struct aluno{ //criar uma estrutura fora da main pra ser global e podendo ser usada em funçoes diferentes se eu quiser
+  float nota1;
+  float nota2;
+  float media;
+};
+
+int main(){
+
+  struct aluno avaliações; //criar uma variavel do tipo da estrutura
+  printf("Digite a primeira nota:\n "); 
+  scanf("%f", &avaliações.nota1);         //pegando os dados das notas e armazenando na estrutura
+  printf("Digite a segunda nota:\n ");
+  scanf("%f", &avaliações.nota2);
+  avaliações.media = (avaliações.nota1 + avaliações.nota2)/2.0;   //calculando a media
+  printf("A média do aluno é: %.2f\n", avaliações.media);
+  return 0;
+}
