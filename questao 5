@@ -1,0 +1,53 @@
+//Crie uma Estrutura disciplina em que um dos campos corresponde tamb ́em a uma estrutura professor.
+
+#include <stdio.h>
+
+// Estrutura para representar um professor
+struct professor {
+    char nome[50];
+    char titulacao[30];
+};
+
+// Estrutura para representar uma disciplina
+struct disciplina {
+    char nome[50];
+    int codigo;
+    int carga_horaria;
+    struct professor prof; // Campo que é uma estrutura professor
+};
+
+int main() {
+    struct disciplina disc;
+
+    // Entrada de dados para a disciplina
+    printf("Digite o nome da disciplina:\n");
+    fgets(disc.nome, 50, stdin);
+
+    printf("Digite o código da disciplina:\n");
+    scanf("%d", &disc.codigo);
+
+    printf("Digite a carga horária da disciplina (em horas):\n");
+    scanf("%d", &disc.carga_horaria);
+
+    // Limpando o buffer para a entrada do professor
+    getchar();
+
+    // Entrada de dados para o professor
+    printf("Digite o nome do professor:\n");
+    fgets(disc.prof.nome, 50, stdin);
+
+    printf("Digite a titulação do professor:\n");
+    fgets(disc.prof.titulacao, 30, stdin);
+
+    // Exibindo os dados
+    printf("\nInformações da disciplina:\n");
+    printf("Nome: %s", disc.nome);
+    printf("Código: %d\n", disc.codigo);
+    printf("Carga horária: %d horas\n", disc.carga_horaria);
+
+    printf("\nInformações do professor:\n");
+    printf("Nome: %s", disc.prof.nome);
+    printf("Titulação: %s", disc.prof.titulacao);
+
+    return 0;
+}
