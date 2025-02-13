@@ -1,0 +1,36 @@
+//Escreva um programa em C que modifique a Quest ̃ao 1 para conter um array com 3 alunos. Escreva
+//uma fun ̧c ̃ao para calcular a m ́edia dos alunos.
+
+#include <stdio.h>
+
+struct alunos{
+  float nota1;
+  float nota2;
+  float media;
+};
+
+void calcular_media(struct alunos *a) {
+    (*a).media = ((*a).nota1 + (*a).nota2) / 2;
+}
+
+int main(){
+
+  struct alunos aluno[3];
+  int i ;
+  
+  for(int i = 0; i < 3; i++){
+    
+  printf("Digite a nota 1 do aluno %d:\n ", i+1);
+    scanf(" %f", &aluno[i].nota1);
+  printf("Digite a nota 2 do aluno %d:\n ", i+1);
+    scanf(" %f", &aluno[i].nota2);
+  calcular_media(&aluno[i]);
+  }
+   for (i = 0; i < 3; i++){
+  printf("\nNotas do aluno: %d\n", i + 1);
+  printf("Nota 1: %.2f\n", aluno[i].nota1);
+  printf("Nota 2: %.2f\n", aluno[i].nota2);
+  printf("Média: %.2f\n", aluno[i].media);
+   }
+  return 0;
+}
